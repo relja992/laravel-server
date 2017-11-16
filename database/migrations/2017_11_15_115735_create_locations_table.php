@@ -13,7 +13,13 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('locations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_id')->nullable(false);
+            $table->string('latitude')->nullable(false);
+            $table->string('longitude')->nullable(false);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('locations');
     }
 }
